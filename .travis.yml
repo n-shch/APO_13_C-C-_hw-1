@@ -49,4 +49,4 @@ script:
   - cd build
   - cmake .. #-DCMAKE_BUILD_TYPE=$BUILD_CONFIGURATION -DTARGET_CPU=$TARGET_CPU
   - cmake --build .
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then valgrind ./hw-1 ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then valgrind --tool=memcheck --leak-check=yes ./hw-1 ; fi

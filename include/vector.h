@@ -8,15 +8,15 @@
 #include <glob.h>
 #include "parser.h"
 #include "stdio.h"
-struct vec_t {
+typedef struct vec_t {
     struct message_t **msgs;
     size_t len;
-};
+} vec_t;
 
-struct vec_t *new_vec();
-void vec_push(struct message_t *msg, struct vec_t *vec);
-int vec_size(struct vec_t *vec);
-void vec_print(struct vec_t *vec);
-void vec_free(struct vec_t *vec);
+vec_t *new_vec();
+void vec_push(struct message_t *msg, vec_t *vec);
+int vec_size(vec_t *vec);
+void vec_print(vec_t *vec);
+void vec_free(vec_t *vec);
 
 #endif //HW_1_VECTOR_H

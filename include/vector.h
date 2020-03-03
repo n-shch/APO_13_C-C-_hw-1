@@ -7,6 +7,7 @@
 
 #include <glob.h>
 #include "parser.h"
+#include "stdio.h"
 struct vec_t {
     struct message_t **msgs;
     size_t len;

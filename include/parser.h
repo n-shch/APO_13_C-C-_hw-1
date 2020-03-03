@@ -6,7 +6,8 @@
 #define HW_1_PARSER_H
 
 #include "vector.h"
-#include <bits/types/FILE.h>
+#include <stdio.h>
+#include <stdlib.h>
 struct message_t {
     char *commit;
     char *author;

@@ -97,6 +97,9 @@ void searching_for_time_frame(char *begining_of_time,char *end_of_time, char *bu
 
 
 void print_task(char *author, char *time_from, char * time_to) {
+    if ((!author) || (!time_from) || (!time_to)) {
+        return;
+    }
     printf("Author's email:%s\nTime begin: %s\nTime end:   %s\n", author, time_from, time_to);
     printf("----------------------------------------\n");
 }

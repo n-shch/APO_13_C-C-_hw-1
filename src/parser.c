@@ -103,6 +103,9 @@ void print_task(char *author, char *time_from, char * time_to) {
 //считываем строки, парсим их, заполняем поля вектора
 void input_parse(FILE *file,vec_t *vec, char *buffer, char *authors_email, char *begining_of_time,
                  char *end_of_time) {
+    if (!file) {
+        return;
+    }
     while (fgets(buffer, 120, file) != NULL) {
         parse_commit(vec, buffer);
         parse_author(vec, buffer);

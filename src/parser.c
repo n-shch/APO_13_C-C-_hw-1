@@ -8,7 +8,6 @@
 #include <stdlib.h>
 #include "parser.h"
 #include <string.h>
-#include <malloc.h>
 
 enum Month {
     Jan = 1,

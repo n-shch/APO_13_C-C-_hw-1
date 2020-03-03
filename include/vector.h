@@ -6,8 +6,16 @@
 #define HW_1_VECTOR_H
 
 #include <glob.h>
-#include "parser.h"
 #include "stdio.h"
+
+
+struct message_t {
+    char *commit;
+    char *author;
+    char *date;
+    int total_time;
+};
+
 typedef struct vec_t {
     struct message_t **msgs;
     size_t len;

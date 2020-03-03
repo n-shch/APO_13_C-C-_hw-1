@@ -6,8 +6,9 @@ set(CMAKE_C_FLAGS  "-std=c11")
 
 include_directories("${PROJECT_SOURCE_DIR}/include")
 
-file(GLOB sources
-        "${PROJECT_SOURCE_DIR}/include/*.h"
-        "${PROJECT_SOURCE_DIR}/src/*.c")
+add_library(vector STATIC src/vector.c)
+add_library(parser STATIC src/parser.c)
 
-add_executable(hw-1 ${sources})
+
+add_executable(hw-1 src/main.c)
+target_link_libraries(hw-1 vector parser)

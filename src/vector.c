@@ -2,12 +2,12 @@
 // Created by nick on 27.02.2020.
 //
 
-#include "../include/vector.h"
+#include <vector.h>
 #include "stdlib.h"
 #include <stdio.h>
 
 vec_t *new_vec() {
-    return calloc(sizeof(struct vec_t), 1);
+    return calloc(sizeof(vec_t), 1);
 }
 
 void vec_push(struct message_t *msg, vec_t *vec) {

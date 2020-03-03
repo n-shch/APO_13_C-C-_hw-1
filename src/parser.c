@@ -2,12 +2,13 @@
 // Created by nick on 27.02.2020.
 //
 #define _GNU_SOURCE
+
+#include "vector.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "../include/parser.h"
+#include "parser.h"
 #include <string.h>
 #include <malloc.h>
-#include "../include/vector.h"
 
 enum Month {
     Jan = 1,
@@ -37,7 +38,7 @@ char *search_field(char *information_line, char *field) {
 }
 
 //если в строке содержится хэш коммита, записываем его в единицу структуры_вектора
-void parse_commit(struct vec_t *vec, char *buffer) {
+void parse_commit(vec_t *vec, char *buffer) {
     char *found = search_field(buffer, "commit");
     if (found) {
         vec->msgs = realloc(vec->msgs, ++vec->len * sizeof(vec->msgs));
@@ -48,7 +49,7 @@ void parse_commit(struct vec_t *vec, char *buffer) {
 
 
 //если в строке содержится автор, записываем его в единицу структуры_вектора
-void parse_author(struct vec_t *vec, char *buffer) {
+void parse_author(vec_t *vec, char *buffer) {
     char *found = search_field(buffer, "Author: ");
     if (found) {
         char *begin = strstr(found,"<");
@@ -60,7 +61,7 @@ void parse_author(struct vec_t *vec, char *buffer) {
 }
 
 //если в строке содержится дата, записываем ее в единицу структуры_вектора
-void parse_date(struct vec_t *vec, char *buffer) {
+void parse_date(vec_t *vec, char *buffer) {
     char *found = search_field(buffer, "Date: ");
     if (found) {
         asprintf(&vec->msgs[vec->len - 1]->date,"%.*s", 20, found + 6);
@@ -100,7 +101,7 @@ void print_task(char *author, char *time_from, char * time_to) {
     printf("----------------------------------------\n");
 }
 //считываем строки, парсим их, заполняем поля вектора
-void input_parse(FILE *file, struct vec_t *vec, char *buffer, char *authors_email, char *begining_of_time,
+void input_parse(FILE *file,vec_t *vec, char *buffer, char *authors_email, char *begining_of_time,
                  char *end_of_time) {
     while (fgets(buffer, 120, file) != NULL) {
         parse_commit(vec, buffer);
@@ -224,14 +225,14 @@ int date_rang(struct message_t *msg) {
     return 0;
 }
 
-void transfer_date_to_sec(struct vec_t *vec) {
+void transfer_date_to_sec(vec_t *vec) {
     for (int i = 0; i < vec_size(vec) - 1; i++) {
         date_rang(vec->msgs[i]);
     }
 }
 
 //пробегаемся по вектору, ищем совпадения по автору и по попаданию дат во временной промежуток
-void hash_selection(char *begining_of_time, char *end_of_time, char *authors_email, struct vec_t *vec) {
+void hash_selection(char *begining_of_time, char *end_of_time, char *authors_email,vec_t *vec) {
     struct date_t *tmp = calloc(sizeof(struct date_t), 1);
     date_parse(begining_of_time,tmp);
     int begining_of_time_sec;

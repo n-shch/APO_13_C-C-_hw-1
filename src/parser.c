@@ -112,19 +112,6 @@ void input_parse(FILE *file,vec_t *vec, char *buffer, char *authors_email, char 
     }
 }
 
-void msg_free(struct message_t *msg) {
-    if (msg->commit) {
-        free(msg->commit);
-    }
-    if (msg->author) {
-        free(msg->author);
-    }
-    if (msg->date) {
-        free(msg->date);
-    }
-    free(msg);
-}
-
 //перевод даты в секунды (для того, чтобы сравнивать с временными рамками)
 int date_to_sec(struct date_t *date) {
     int total_time =

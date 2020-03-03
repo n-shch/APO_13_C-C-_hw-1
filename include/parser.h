@@ -35,7 +35,7 @@ void input_parse(FILE *file, vec_t *vec, char *buffer, char *authors_email, char
 
 
 
-void msg_free(struct message_t *msg);
+
 
 
 int date_to_sec(struct date_t *date);

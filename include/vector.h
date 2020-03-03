@@ -26,5 +26,6 @@ void vec_push(struct message_t *msg, vec_t *vec);
 int vec_size(vec_t *vec);
 void vec_print(vec_t *vec);
 void vec_free(vec_t *vec);
+void msg_free(struct message_t *msg);
 
 #endif //HW_1_VECTOR_H

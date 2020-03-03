@@ -35,3 +35,16 @@ void vec_free(vec_t  *vec) {
     free(vec->msgs);
     free(vec);
 }
+
+void msg_free(struct message_t *msg) {
+    if (msg->commit) {
+        free(msg->commit);
+    }
+    if (msg->author) {
+        free(msg->author);
+    }
+    if (msg->date) {
+        free(msg->date);
+    }
+    free(msg);
+}

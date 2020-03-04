@@ -1,0 +1,135 @@
+
+commit adca5e379ec0dfdece8071c16dd2e056691160e7
+Merge: ce19088 b934735
+Author: Grigory <grigrol48@mail.ru>
+Date:   Sun Dec 1 13:24:51 2019 +0300
+
+    wtf
+
+commit ce190889826d336050b7b6746c80ec4636c8b93c
+Author: Grigory <grigrol48@mail.ru>
+Date:   Sun Dec 1 12:40:16 2019 +0300
+
+    bullet
+
+commit b934735683e260411037985d1b49b4490cca71e6
+Author: Danila Nakonechny <chessmate13@mail.ru>
+Date:   Sun Dec 1 12:23:44 2019 +0300
+
+    bullet server realization
+
+commit b8a2008d9d7ccc08cbbbbef0132fafa1a3dac487
+Author: Danila Nakonechny <chessmate13@mail.ru>
+Date:   Sun Dec 1 07:59:05 2019 +0000
+
+    Удалил лишнее
+
+commit 6efaf332f42dd0a6ebbc6cd03e871064bcb9eae2
+Merge: d5d7eca e8b1059
+Author: Danila Nakonechny <chessmate13@mail.ru>
+Date:   Sat Nov 30 16:00:48 2019 +0000
+
+    Merge branch 'Nikita' into 'master'
+    
+    Nikita
+    
+    See merge request skywarrior/bubble-royal!4
+
+commit 9a2844807468bb00ef61c81c56e6573004d83bf3 (Nikita)
+Author: Nikita Shchelkanov <nik.shchelkanov@gmail.com>
+Date:   Sat Nov 30 18:39:18 2019 +0300
+
+    all outs has been commented
+
+commit e8b10596506a41135d7b9309ad27a86c575e2632 (origin/Nikita)
+Author: Nikita Shchelkanov <nik.shchelkanov@gmail.com>
+Date:   Sat Nov 30 18:39:18 2019 +0300
+
+    first merge done
+
+commit c22b35375cf8a3f8078782243a1fe6b524239803 (origin/basic_merge, basic_merge)
+Author: Danila Nakonechny <chessmate13@mail.ru>
+Date:   Sat Nov 30 17:14:14 2019 +0300
+
+    send to server
+
+commit c8f8896828d3cb3f8478f53ebf943a84c7127c04
+Merge: 7c2ea2e cc76f52
+Author: Nikita Shchelkanov <nik.shchelkanov@gmail.com>
+Date:   Sat Nov 30 15:52:03 2019 +0300
+
+    Merge branch 'basic_grapfics' into basic_merge
+    First merge
+
+commit 7c2ea2eaa8ffc676de0519f1bf72b21859a5df7e
+Merge: d4d7cf8 24e91a7
+Author: Danila Nakonechny <chessmate13@mail.ru>
+Date:   Sat Nov 30 12:33:53 2019 +0000
+
+    Merge branch 'init2' into 'basic_merge'
+    
+    Реализован дисконнект игроков и их удаление из сервера и клиентов
+    
+    See merge request skywarrior/bubble-royal!2
+
+commit 24e91a7c899aae85a6e8bbf74ae84ab41f98973d (origin/init2, init2)
+Author: Danila Nakonechny <chessmate13@mail.ru>
+Date:   Sat Nov 30 15:18:31 2019 +0300
+
+    Реализован дисконнект игроков и их удаление из сервера и клиентов
+
+commit cc76f524cce6ba253f9ab881db7224f264a94a41 (basic_grapfics)
+Author: Nikita Shchelkanov <nik.shchelkanov@gmail.com>
+Date:   Sat Nov 30 10:55:04 2019 +0300
+
+    try to merge
+
+commit ac1cd8036c8c2685b9541e4149fddfea55b49406 (origin/basic_grapfics)
+Author: Nikita Shchelkanov <nik.shchelkanov@gmail.com>
+Date:   Sat Nov 30 10:46:07 2019 +0300
+
+    basic graphics
+
+commit 0e2d0a9dd2670de24fb40e379a03b5af828b760e (making-client)
+Author: Nikita Shchelkanov <nik.shchelkanov@gmail.com>
+Date:   Fri Nov 29 17:52:38 2019 +0300
+
+    Отрисовка для сборки
+
+commit d4d7cf8197985decc861243893049e2b51480e8f
+Author: Danila Nakonechny <chessmate13@mail.ru>
+Date:   Fri Nov 29 17:40:15 2019 +0300
+
+    Реализовано базоая клиент-серверная архитектура
+
+commit 1774d5b64136c50fe144a0b2d2db09f0b3b555b1
+Author: Nikita Shchelkanov <nik.shchelkanov@gmail.com>
+Date:   Sun Nov 24 16:27:05 2019 +0300
+
+    игрался с sfml, а в чем гит?
+
+commit d5d7ecaf88dc1f492f05cb055350b47db2987e79
+Merge: 0c5c471 b0ab6b4
+Author: Danila Nakonechny <chessmate13@mail.ru>
+Date:   Sun Nov 17 13:55:08 2019 +0000
+
+    Merge branch 'init' into 'master'
+    
+    Добавил заглушку для проекта
+    
+    See merge request skywarrior/bubble-royal!1
+
+commit b0ab6b4b918672976faa40d56720a15a9a158fbd
+Author: Danila Nakonechny <chessmate13@mail.ru>
+Date:   Sun Nov 17 16:49:13 2019 +0300
+
+    Добавил заглушку для проекта
+
+commit 0c5c4712c82bd9d29d743bec6d66a4222f810185
+Author: Danila Nakonechny <chessmate13@mail.ru>
+Date:   Sun Nov 17 11:01:52 2019 +0000
+
+    Initial commit
+
+author's email: <chessmate13@mail.ru>
+time interval: Sun Nov 17 13:55:08 2019 +0000 - Sun Dec 1 13:24:51 2019 +0300

@@ -74,7 +74,7 @@ void searching_for_target_email(char *authors_email, char *buffer) {
         char *begin = strstr(found,"<");
         char *end = strstr(found, ">");
         if (begin && end) {
-            asprintf(&authors_email, "%.*s", (int)(end - begin - 1), begin + 1);
+            sprintf(authors_email, "%.*s", (int)(end - begin - 1), begin + 1);
         }
     }
 }
@@ -86,11 +86,11 @@ void searching_for_time_frame(char *begining_of_time,char *end_of_time, char *bu
     if (found) {
         found += 5;
         char *end = strstr(found, "+");
-        asprintf(&begining_of_time,"%.*s",(int)(end - found), found);
+        sprintf(begining_of_time,"%.*s",(int)(end - found), found);
         char *begin = strstr(found, "-");
         end = strstr(begin, "+");
         begin +=6;
-        asprintf(&end_of_time,"%.*s", (int)(end - begin), begin);
+        sprintf(end_of_time,"%.*s", (int)(end - begin), begin);
     }
 }
 
@@ -135,8 +135,8 @@ int date_parse(char *str, struct date_t *date) {
     if (!str || !date) {
         return -1;
     }
-    char tmp[10];
-    sprintf(tmp, "%.*s", 3, str);
+    char *tmp;
+    asprintf(&tmp, "%.*s", 3, str);
     if (!strcmp(tmp, "Jan")) {
         date->month = Jan;
     }
@@ -174,7 +174,7 @@ int date_parse(char *str, struct date_t *date) {
         date->month = Dec;
     }
     str += 4;
-    char day[10];
+    char day[2];
     sprintf(day,"%.*s", 2,str);
     date->day = atoi(day);
     if (date->day / 10 == 0) {
@@ -194,9 +194,10 @@ int date_parse(char *str, struct date_t *date) {
     sprintf(day, "%.*s", 2, str);
     date->sec = atoi(day);
     str+= 3;
-    char year[10];
+    char year[4];
     sprintf(year, "%.*s", 4, str);
     date->year = atoi(year);
+    free(tmp);
     return 0;
 }
 

@@ -20,6 +20,3 @@ TEST(search_field_test, valid_data) {
 TEST(testy, not_ok) {
     ASSERT_EQ(0, func(0));
 }
-
-TEST
-

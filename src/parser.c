@@ -174,8 +174,8 @@ int date_parse(char *str, struct date_t *date) {
         date->month = Dec;
     }
     str += 4;
-    char day[2];
-    sprintf(day,"%.*s", 2,str);
+    char *day;
+    asprintf(&day,"%.*s", 2,str);
     date->day = atoi(day);
     if (date->day / 10 == 0) {
         str += 2;
@@ -183,21 +183,23 @@ int date_parse(char *str, struct date_t *date) {
         str += 3;
     }
 //    hours
-    sprintf(day, "%.*s", 2, str);
+    asprintf(&day, "%.*s", 2, str);
     date->hours = atoi(day);
 //    minutes
     str += 3;
-    sprintf(day, "%.*s", 2, str);
+    asprintf(&day, "%.*s", 2, str);
     date->min = atoi(day);
 //    seconds
     str += 3;
-    sprintf(day, "%.*s", 2, str);
+    asprintf(&day, "%.*s", 2, str);
     date->sec = atoi(day);
     str+= 3;
-    char year[4];
-    sprintf(year, "%.*s", 4, str);
+    char *year;
+    asprintf(&year, "%.*s", 4, str);
     date->year = atoi(year);
     free(tmp);
+    free(day);
+    free(year);
     return 0;
 }
 

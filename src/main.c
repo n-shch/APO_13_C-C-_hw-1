@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <testy/parser.h>
 
-#define FILE_PATH "/home/nick/TP/text.txt"
+#define FILE_PATH "../text.txt"
 int main() {
     FILE *f = fopen(FILE_PATH, "r");
     if (!f) {

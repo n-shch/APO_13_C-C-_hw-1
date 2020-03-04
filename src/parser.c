@@ -132,6 +132,9 @@ int date_to_sec(struct date_t *date) {
 
 //Парсинг строки с датой в структуру с целочисленными полями - единицами измерений даты
 int date_parse(char *str, struct date_t *date) {
+    if (!str || !date) {
+        return -1;
+    }
     char *tmp;
     asprintf(&tmp, "%.*s", 3, str);
     if (!strcmp(tmp, "Jan")) {

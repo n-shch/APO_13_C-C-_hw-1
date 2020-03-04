@@ -3,10 +3,10 @@
 //
 #define _GNU_SOURCE
 
-#include "vector.h"
+#include "testy/vector.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "parser.h"
+#include "testy/parser.h"
 #include <string.h>
 
 enum Month {
@@ -245,4 +245,9 @@ void hash_selection(char *begining_of_time, char *end_of_time, char *authors_ema
             printf("----------------------------------------\n");
         }
     }
+}
+
+
+int func(int a) {
+    return a;
 }

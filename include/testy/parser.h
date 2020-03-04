@@ -5,7 +5,7 @@
 #ifndef HW_1_PARSER_H
 #define HW_1_PARSER_H
 
-#include <vector.h>
+#include <testy/vector.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -45,4 +45,6 @@ void print_date_t(struct date_t *date);
 void transfer_date_to_sec(vec_t *vec);
 
 void hash_selection(char *begining_of_time, char *end_of_time, char *authors_email, vec_t *vec);
+
+int func(int a);
 #endif //HW_1_PARSER_H

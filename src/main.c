@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <parser.h>
+#include <testy/parser.h>
 
 #define FILE_PATH "/home/nick/TP/text.txt"
 int main() {

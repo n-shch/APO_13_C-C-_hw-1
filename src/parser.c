@@ -74,7 +74,7 @@ void searching_for_target_email(char *authors_email, char *buffer) {
         char *begin = strstr(found,"<");
         char *end = strstr(found, ">");
         if (begin && end) {
-            sprintf(authors_email, "%.*s", (int)(end - begin - 1), begin + 1);
+            asprintf(&authors_email, "%.*s", (int)(end - begin - 1), begin + 1);
         }
     }
 }
@@ -86,11 +86,11 @@ void searching_for_time_frame(char *begining_of_time,char *end_of_time, char *bu
     if (found) {
         found += 5;
         char *end = strstr(found, "+");
-        sprintf(begining_of_time,"%.*s",(int)(end - found), found);
+        asprintf(&begining_of_time,"%.*s",(int)(end - found), found);
         char *begin = strstr(found, "-");
         end = strstr(begin, "+");
         begin +=6;
-        sprintf(end_of_time,"%.*s", (int)(end - begin), begin);
+        asprintf(&end_of_time,"%.*s", (int)(end - begin), begin);
     }
 }
 
@@ -135,8 +135,8 @@ int date_parse(char *str, struct date_t *date) {
     if (!str || !date) {
         return -1;
     }
-    char *tmp;
-    asprintf(&tmp, "%.*s", 3, str);
+    char tmp[10];
+    sprintf(tmp, "%.*s", 3, str);
     if (!strcmp(tmp, "Jan")) {
         date->month = Jan;
     }
@@ -174,8 +174,8 @@ int date_parse(char *str, struct date_t *date) {
         date->month = Dec;
     }
     str += 4;
-    char *day;
-    asprintf(&day,"%.*s", 2,str);
+    char day[10];
+    sprintf(day,"%.*s", 2,str);
     date->day = atoi(day);
     if (date->day / 10 == 0) {
         str += 2;
@@ -183,23 +183,20 @@ int date_parse(char *str, struct date_t *date) {
         str += 3;
     }
 //    hours
-    asprintf(&day, "%.*s", 2, str);
+    sprintf(day, "%.*s", 2, str);
     date->hours = atoi(day);
 //    minutes
     str += 3;
-    asprintf(&day, "%.*s", 2, str);
+    sprintf(day, "%.*s", 2, str);
     date->min = atoi(day);
 //    seconds
     str += 3;
-    asprintf(&day, "%.*s", 2, str);
+    sprintf(day, "%.*s", 2, str);
     date->sec = atoi(day);
     str+= 3;
-    char *year;
-    asprintf(&year, "%.*s", 4, str);
+    char year[10];
+    sprintf(year, "%.*s", 4, str);
     date->year = atoi(year);
-    free(tmp);
-    free(day);
-    free(year);
     return 0;
 }
 

@@ -16,10 +16,16 @@ void vec_push(struct message_t *msg, vec_t *vec) {
 }
 
 int vec_size(vec_t  *vec) {
+    if (!vec) {
+        return 0;
+    }
     return vec->len;
-
 }
+
 void vec_print(vec_t  *vec) {
+    if (!vec) {
+        return;
+    }
     for (int i = 0; i < vec_size(vec) - 1; i++) {
         printf("%s\n", vec->msgs[i]->commit);
         printf("%s\n", vec->msgs[i]->author);
@@ -29,6 +35,9 @@ void vec_print(vec_t  *vec) {
 }
 
 void vec_free(vec_t  *vec) {
+    if (!vec) {
+        return;
+    }
     for (int i = 0; i < vec_size(vec); i++) {
         msg_free(vec->msgs[i]);
     }
@@ -37,6 +46,9 @@ void vec_free(vec_t  *vec) {
 }
 
 void msg_free(struct message_t *msg) {
+    if (!msg) {
+        return;
+    }
     if (msg->commit) {
         free(msg->commit);
     }

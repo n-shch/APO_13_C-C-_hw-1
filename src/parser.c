@@ -103,7 +103,7 @@ void print_task(char *author, char *time_from, char * time_to) {
     printf("----------------------------------------\n");
 }
 //считываем строки, парсим их, заполняем поля вектора
-void input_parse(FILE *file,vec_t *vec, char *buffer, char *authors_email, char *begining_of_time,
+void input_parse(FILE *file, vec_t *vec, char *buffer, char *authors_email, char *begining_of_time,
                  char *end_of_time) {
     if (!file) {
         return;
@@ -119,6 +119,9 @@ void input_parse(FILE *file,vec_t *vec, char *buffer, char *authors_email, char 
 
 //перевод даты в секунды (для того, чтобы сравнивать с временными рамками)
 int date_to_sec(struct date_t *date) {
+    if(!date) {
+        return 0;
+    }
     int total_time =
             (((date->year)%100) * 365 * 24 * 3600) +
                     (date->month * 31 * 24 * 3600) +
@@ -250,7 +253,6 @@ void hash_selection(char *begining_of_time, char *end_of_time, char *authors_ema
         }
     }
 }
-
 
 int func(int a) {
     return a;

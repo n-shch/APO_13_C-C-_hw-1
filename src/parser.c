@@ -95,7 +95,7 @@ void searching_for_time_frame(char *begining_of_time,char *end_of_time, char *bu
 }
 
 
-void print_task(char *author, char *time_from, char * time_to) {
+void print_task(const char *author, const char *time_from, const char * time_to) {
     if ((!author) || (!time_from) || (!time_to)) {
         return;
     }
@@ -119,8 +119,8 @@ void input_parse(FILE *file, vec_t *vec, char *buffer, char *authors_email, char
 
 //перевод даты в секунды (для того, чтобы сравнивать с временными рамками)
 int date_to_sec(struct date_t *date) {
-    if(!date) {
-        return 0;
+    if (!date) {
+        return -1;
     }
     int total_time =
             (((date->year)%100) * 365 * 24 * 3600) +
@@ -218,7 +218,12 @@ void print_date_t(struct date_t *date) {
 //заполнение единицы структуры вектора секундным аналогом времени
 int date_rang(struct message_t *msg) {
     struct date_t *tmp = calloc(sizeof(struct date_t), 1);
-    date_parse(msg->date,tmp);
+
+    if (date_parse(msg->date,tmp) == -1) {
+        fprintf(stderr, "date_parse_error: %d", -1);
+        free(tmp);
+        return -1;
+    }
     msg->total_time = date_to_sec(tmp);
     free(tmp);
     return 0;
@@ -232,13 +237,34 @@ void transfer_date_to_sec(vec_t *vec) {
 
 //пробегаемся по вектору, ищем совпадения по автору и по попаданию дат во временной промежуток
 void hash_selection(char *begining_of_time, char *end_of_time, char *authors_email,vec_t *vec) {
+    if (!begining_of_time || !end_of_time || !authors_email || !vec) {
+        return;
+    }
     struct date_t *tmp = calloc(sizeof(struct date_t), 1);
-    date_parse(begining_of_time,tmp);
+    if (date_parse(begining_of_time,tmp) == -1) {
+        free(tmp);
+        fprintf(stderr, "date_parse_error : %d", -1);
+        return;
+    }
     int begining_of_time_sec;
     begining_of_time_sec = date_to_sec(tmp);
-    date_parse(end_of_time,tmp);
+    if (begining_of_time_sec == -1) {
+        free(tmp);
+        fprintf(stderr, "date_to_sec_error : %d", -1);
+        return;
+    }
+    if (date_parse(end_of_time,tmp) == -1) {
+        free(tmp);
+        fprintf(stderr, "date_parse_error : %d", -1);
+        return;
+    }
     int end_of_time_sec;
     end_of_time_sec = date_to_sec(tmp);
+    if (end_of_time_sec == -1) {
+        free(tmp);
+        fprintf(stderr, "date_to_sec_error : %d", -1);
+        return;
+    }
     free(tmp);
 //    printf("from: %d\nto  : %d\n", begining_of_time_sec, end_of_time_sec);
 
@@ -252,8 +278,4 @@ void hash_selection(char *begining_of_time, char *end_of_time, char *authors_ema
             printf("----------------------------------------\n");
         }
     }
-}
-
-int func(int a) {
-    return a;
 }

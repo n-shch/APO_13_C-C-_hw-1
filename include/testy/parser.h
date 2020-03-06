@@ -29,7 +29,7 @@ void parse_date(vec_t *vec, char *buffer);
 void searching_for_target_email(char *authors_email, char *buffer);
 void searching_for_time_frame(char *begining_of_time,char *end_of_time, char *buffer);
 
-void print_task(char *author, char *time_from, char * time_to);
+void print_task(const char *author, const char *time_from, const char * time_to);
 void input_parse(FILE *file, vec_t *vec, char *buffer, char *authors_email, char *begining_of_time,
                  char *end_of_time);
 
@@ -46,5 +46,4 @@ void transfer_date_to_sec(vec_t *vec);
 
 void hash_selection(char *begining_of_time, char *end_of_time, char *authors_email, vec_t *vec);
 
-int func(int a);
 #endif //HW_1_PARSER_H

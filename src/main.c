@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <testy/parser.h>
-
+#define STRING_MAX_SIZE 255
 #define FILE_PATH "../text.txt"
 int main() {
     FILE *f = fopen(FILE_PATH, "r");
@@ -11,11 +11,16 @@ int main() {
         printf("file was opened successfully\n");
     }
 
-    char buffer[255];
-    char authors_email[255];
-    char begining_of_time[255];
-    char end_of_time[255];
+    char buffer[STRING_MAX_SIZE];
+    char authors_email[STRING_MAX_SIZE];
+    char begining_of_time[STRING_MAX_SIZE];
+    char end_of_time[STRING_MAX_SIZE];
     struct vec_t *vec = new_vec();
+    if (!vec) {
+        fclose(f);
+        fprintf(stderr, "memory allocation error: %d", 1);
+        return -1;
+    }
 
 
 

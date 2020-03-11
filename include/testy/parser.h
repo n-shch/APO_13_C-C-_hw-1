@@ -21,9 +21,16 @@ struct date_t {
     int sec;
 };
 
+
+char *search_field(char *information_line, char *field);
+
 void print_task(const char *author, const char *time_from, const char * time_to);
 void input_parse(FILE *file, vec_t *vec, char *buffer, char *authors_email, char *begining_of_time,
                  char *end_of_time);
+
+
+
+
 
 void print_date_t(struct date_t *date);
 void transfer_date_to_sec(vec_t *vec);

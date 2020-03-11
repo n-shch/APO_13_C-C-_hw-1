@@ -26,7 +26,7 @@ enum Month {
 
 
 //поиск подстроки в строке, возвращение указателя на начало подстроки с ИНФОРМАЦИЕЙ
-static char *search_field(char *information_line, char *field) {
+char *search_field(char *information_line, char *field) {
     char *found = strstr(information_line, field);
     if (found) {
         found += strlen(field);

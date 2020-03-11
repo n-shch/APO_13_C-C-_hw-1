@@ -26,7 +26,7 @@ enum Month {
 
 
 //поиск подстроки в строке, возвращение указателя на начало подстроки с ИНФОРМАЦИЕЙ
-char *search_field(char *information_line, char *field) {
+static char *search_field(char *information_line, char *field) {
     char *found = strstr(information_line, field);
     if (found) {
         found += strlen(field);
@@ -37,7 +37,7 @@ char *search_field(char *information_line, char *field) {
 }
 
 //если в строке содержится хэш коммита, записываем его в единицу структуры_вектора
-void parse_commit(vec_t *vec, char *buffer) {
+static void parse_commit(vec_t *vec, char *buffer) {
     char *found = search_field(buffer, "commit");
     if (found) {
         vec->msgs = realloc(vec->msgs, ++vec->len * sizeof(vec->msgs));
@@ -48,7 +48,7 @@ void parse_commit(vec_t *vec, char *buffer) {
 
 
 //если в строке содержится автор, записываем его в единицу структуры_вектора
-void parse_author(vec_t *vec, char *buffer) {
+static void parse_author(vec_t *vec, char *buffer) {
     char *found = search_field(buffer, "Author: ");
     if (found) {
         char *begin = strstr(found,"<");
@@ -60,7 +60,7 @@ void parse_author(vec_t *vec, char *buffer) {
 }
 
 //если в строке содержится дата, записываем ее в единицу структуры_вектора
-void parse_date(vec_t *vec, char *buffer) {
+static void parse_date(vec_t *vec, char *buffer) {
     char *found = search_field(buffer, "Date: ");
     if (found) {
         asprintf(&vec->msgs[vec->len - 1]->date,"%.*s", 20, found + 6);
@@ -68,7 +68,7 @@ void parse_date(vec_t *vec, char *buffer) {
 }
 
 //ищем целевой email-адрес, записываем его в переменную
-void searching_for_target_email(char *authors_email, char *buffer) {
+static void searching_for_target_email(char *authors_email, char *buffer) {
     char *found = search_field(buffer, "author's email:");
     if (found) {
         char *begin = strstr(found,"<");
@@ -81,7 +81,7 @@ void searching_for_target_email(char *authors_email, char *buffer) {
 
 
 //ищем временные рамки, записываем их в соответствующие переменные
-void searching_for_time_frame(char *begining_of_time,char *end_of_time, char *buffer) {
+static void searching_for_time_frame(char *begining_of_time,char *end_of_time, char *buffer) {
     char *found = search_field(buffer, "time interval:");
     if (found) {
         found += 5;
@@ -118,7 +118,7 @@ void input_parse(FILE *file, vec_t *vec, char *buffer, char *authors_email, char
 }
 
 //перевод даты в секунды (для того, чтобы сравнивать с временными рамками)
-int date_to_sec(struct date_t *date) {
+static int date_to_sec(struct date_t *date) {
     if (!date) {
         return -1;
     }
@@ -134,7 +134,7 @@ int date_to_sec(struct date_t *date) {
 }
 
 //Парсинг строки с датой в структуру с целочисленными полями - единицами измерений даты
-int date_parse(char *str, struct date_t *date) {
+static int date_parse(char *str, struct date_t *date) {
     if (!str || !date) {
         return -1;
     }
@@ -216,7 +216,7 @@ void print_date_t(struct date_t *date) {
 }
 
 //заполнение единицы структуры вектора секундным аналогом времени
-int date_rang(struct message_t *msg) {
+static int date_rang(struct message_t *msg) {
     struct date_t *tmp = calloc(sizeof(struct date_t), 1);
 
     if (date_parse(msg->date,tmp) == -1) {

@@ -12,8 +12,16 @@ vec_t *new_vec() {
 
 void vec_push(struct message_t *msg, vec_t *vec) {
     vec->msgs = realloc(vec->msgs, ++vec->len * sizeof(struct message *));
-    vec->msgs[vec->len - 1] = calloc(sizeof(struct message_t), 1);
-    vec->msgs[vec->len - 1] = msg;
+    if (vec->msgs == NULL) {
+        return;
+    } else {
+        vec->msgs[vec->len - 1] = calloc(sizeof(struct message_t), 1);
+        if (vec->msgs[vec->len - 1] == NULL) {
+            return;
+        } else {
+            vec->msgs[vec->len - 1] = msg;
+        }
+    }
 }
 
 int vec_size(vec_t  *vec) {
